@@ -18,7 +18,7 @@
 <br>
 
 ## 📌 Overview
-![First page screenshot](./assets/movieapi-ss.png)
+![First page screenshot](.movie-explorer/assets/movieapi-ss.png)
 
 <br>
 
