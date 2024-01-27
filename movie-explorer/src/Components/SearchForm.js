@@ -3,6 +3,8 @@ import { BiSend } from "react-icons/bi";
 import Axios from "axios";
 import { Outlet, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 // useNavigate
 export const MyContext = createContext();
 
@@ -37,17 +39,17 @@ const SearchForm = () => {
 
     const randommovie =
       movielistarray[Math.floor(Math.random() * movielistarray.length)];
-      console.log(randommovie);
+      // console.log(randommovie);
 
     const moviefxn = async () => {
-      const responsePage = await Axios.get(
-        `https://www.omdbapi.com/?i=tt3896198&apikey=404a2bb7&s=${randommovie}`
-      );
+      // const responsePage = await Axios.get(
+      //   `https://www.omdbapi.com/?i=tt3896198&apikey=404a2bb7&s=${randommovie}`
+      // );
 
-      const results = responsePage?.data?.totalResults-70;
-      console.log(results);
+      // const results = responsePage?.data?.totalResults-70;
+      // console.log(results);
       let pagenum = Math.floor(Math.random()*5);
-      console.log(pagenum);
+      // console.log(pagenum);
       pagenum++;
 
       const finalresponse = await Axios.get(
@@ -56,7 +58,7 @@ const SearchForm = () => {
 
       const finalresults = finalresponse?.data?.Search;
 
-      console.log(finalresults[0]?.Title);
+      // console.log(finalresults[0]?.Title);
 
       SetMovieDetails(finalresults);
       SetMovieList(true);
@@ -66,7 +68,7 @@ const SearchForm = () => {
 
   const handlemovielistdetail=async(e)=>{
 
-    console.log(e.target.innerHTML.toLowerCase());
+    // console.log(e.target.innerHTML.toLowerCase());
     const textfrommovielist=e.target.innerHTML.toLowerCase();
 
     const response = await Axios.get(
@@ -81,87 +83,119 @@ const SearchForm = () => {
     navigate("movie/moviemoredetails");
   }
 
-  const handlesubmit = async () => {
-    // e.preventDefault();
+  // const handlesubmit = async () => {
+  //   // e.preventDefault();
 
+  //   const response = await Axios.get(
+  //     ` https://www.omdbapi.com/?i=tt3896198&apikey=404a2bb7&t=${input}`
+  //   );
+
+  //   // const image = await Axios.get(`http://img.omdbapi.com/?apikey=404a2bb7&t=${input}`);
+
+  //   // const imgdata=image.data;
+  //   // console.log(imgdata);
+  //   // console.log(image);
+
+  //   // const navigate=useNavigate();
+  //   // const notify = () => {
+  //   //   toast("Default Notification !");
+
+  //   //   toast.success("Success Notification !", {
+  //   //     position: toast.POSITION.TOP_CENTER
+  //   //   });
+
+  //   //   toast.error("Error Notification !", {
+  //   //     position: toast.POSITION.TOP_LEFT
+  //   //   });
+
+  //   //   toast.warn("Warning Notification !", {
+  //   //     position: toast.POSITION.BOTTOM_LEFT
+  //   //   });
+
+  //   //   toast.info("Info Notification !", {
+  //   //     position: toast.POSITION.BOTTOM_CENTER
+  //   //   });
+
+  //   //   toast("Custom Style Notification with css class!", {
+  //   //     position: toast.POSITION.BOTTOM_RIGHT,
+  //   //     className: 'foo-bar'
+  //   //   });
+  //   // };
+
+  //   const details = response.data;
+  //   // console.log(details);
+
+  //   if (!input) {
+  //     // alert("Please enter Movie Name");
+  //     // notify();
+  //     // const notify = () => {
+
+  //     // toast("Default Notification !");
+
+  //     toast.warn("Please Enter Movie/Series Name !", {
+  //       position: toast.POSITION.TOP_LEFT,
+  //       // theme:"dark",
+  //     });
+
+  //     // }
+  //     // notify();
+  //     return navigate("/");
+  //   }
+  //   if (details.Error === "Movie not found!") {
+  //     // alert("No Movie Found..Search some other Movie");
+  //     setInput("");
+  //     toast.error("Please Enter Some OTHER Movie/Series Name !", {
+  //       position: toast.POSITION.TOP_LEFT,
+  //       // theme:"dark",
+  //     });
+  //     return navigate("/");
+  //   }
+  //   window.onload = function () {
+  //     window.location = "/";
+  //   };
+
+  //   // console.log(details);
+
+  //   setDetails(details);
+  //   SetMovieList(false);
+
+  //   navigate("/movie");
+  //   ref.current?.scrollIntoView({ behavior: "smooth" });
+  //   // setInput("");
+  // };
+
+  const handlesubmit = async () => {
     const response = await Axios.get(
       ` https://www.omdbapi.com/?i=tt3896198&apikey=404a2bb7&t=${input}`
     );
-
-    // const image = await Axios.get(`http://img.omdbapi.com/?apikey=404a2bb7&t=${input}`);
-
-    // const imgdata=image.data;
-    // console.log(imgdata);
-    // console.log(image);
-
-    // const navigate=useNavigate();
-    // const notify = () => {
-    //   toast("Default Notification !");
-
-    //   toast.success("Success Notification !", {
-    //     position: toast.POSITION.TOP_CENTER
-    //   });
-
-    //   toast.error("Error Notification !", {
-    //     position: toast.POSITION.TOP_LEFT
-    //   });
-
-    //   toast.warn("Warning Notification !", {
-    //     position: toast.POSITION.BOTTOM_LEFT
-    //   });
-
-    //   toast.info("Info Notification !", {
-    //     position: toast.POSITION.BOTTOM_CENTER
-    //   });
-
-    //   toast("Custom Style Notification with css class!", {
-    //     position: toast.POSITION.BOTTOM_RIGHT,
-    //     className: 'foo-bar'
-    //   });
-    // };
-
+  
     const details = response.data;
-    console.log(details);
-
+  
     if (!input) {
-      // alert("Please enter Movie Name");
-      // notify();
-      // const notify = () => {
-
-      // toast("Default Notification !");
-
       toast.warn("Please Enter Movie/Series Name !", {
-        position: toast.POSITION.TOP_LEFT,
-        // theme:"dark",
+        position: "top-left",
       });
-
-      // }
-      // notify();
       return navigate("/");
     }
+  
     if (details.Error === "Movie not found!") {
-      // alert("No Movie Found..Search some other Movie");
       setInput("");
       toast.error("Please Enter Some OTHER Movie/Series Name !", {
-        position: toast.POSITION.TOP_LEFT,
-        // theme:"dark",
+        position: "top-left",
       });
       return navigate("/");
     }
-    window.onload = function () {
-      window.location = "/";
-    };
-
-    console.log(details);
-
+  
+    // Remove the following line
+    // window.onload = function () { window.location = "/"; };
+  
     setDetails(details);
     SetMovieList(false);
-
+  
     navigate("/movie");
     ref.current?.scrollIntoView({ behavior: "smooth" });
-    // setInput("");
   };
-
+  
   return (
     <MyContext.Provider value={{ details,moviedetails,SetMovieList,ref3 }}>
       <div ref={ref3} className="mt-20 flex flex-row justify-center gap-3">

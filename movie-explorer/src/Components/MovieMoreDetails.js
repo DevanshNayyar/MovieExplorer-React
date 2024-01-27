@@ -11,7 +11,7 @@ const MovieMoreDetails = () => {
   const { details,SetMovieList,ref3 } = useContext(MyContext);
   // const { moviedetails } = useContext(MyContext);
   const typemors = details.Type;
-  console.log(typemors);
+  // console.log(typemors);
 
   const { ref2 } = useContext(MyContext2);
 
