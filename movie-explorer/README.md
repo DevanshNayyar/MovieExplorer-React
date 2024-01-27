@@ -2,7 +2,7 @@
 <hr>
 <br> 
 
-## 📌Live Site : [Visit Here](https://react-movieapi-madhavsahi.netlify.app/ "Live Link")
+## 📌Live Site : [Visit Here](https://movie-explorer-devansh-nayyar-reactjs.netlify.app/ "Live Link")
 
 <br>
 
